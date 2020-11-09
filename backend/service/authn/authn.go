@@ -8,7 +8,6 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"net"
 	"net/http"
 	"net/url"
 	"strings"
@@ -299,11 +298,7 @@ func NewProvider(config *authnv1.Config) (Provider, error) {
 	}
 
 	// Parse issuer for domain.
-	u, err := url.Parse(c.Issuer)
-	if err != nil {
-		return nil, err
-	}
-	issuingHost, _, err := net.SplitHostPort(u.Host)
+	issuerURL, err := url.Parse(c.Issuer)
 	if err != nil {
 		return nil, err
 	}
@@ -314,7 +309,7 @@ func NewProvider(config *authnv1.Config) (Provider, error) {
 		oauth2:              oc,
 		httpClient:          httpClient,
 		sessionSecret:       config.SessionSecret,
-		issuer:              issuingHost,
+		issuer:              issuerURL.Hostname(),
 		claimsFromOIDCToken: DefaultClaimsFromOIDCToken,
 	}
 

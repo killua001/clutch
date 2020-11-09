@@ -41,7 +41,7 @@ func newRepository() (*repository, error) {
 // #nosec G101
 const createOrUpdateProviderToken = `
 INSERT INTO authn_tokens (user_id, provider, token_type, id_token, access_token, refresh_token) VALUES ($1, $2, $3, $4, $5, $6)
-ON CONFLICT DO UPDATE SET
+ON CONFLICT (user_id, provider) DO UPDATE SET
     user_id = EXCLUDED.user_id,
     provider = EXCLUDED.provider,
     token_type = EXCLUDED.token_type,
