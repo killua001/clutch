@@ -1,3 +1,5 @@
+import { Grid } from "@material-ui/core";
+
 // @ts-ignore
 import { BaseWorkflowProps, WorkflowConfiguration } from "./AppProvider/workflow";
 import { CheckboxPanel } from "./Input/checkbox";
@@ -12,26 +14,21 @@ import { useWizardContext, WizardContext } from "./Contexts";
 import { Dialog, DialogActions, DialogContent } from "./dialog";
 import { Error } from "./error";
 import { Hint, Note, NoteConfig, NotePanel, Warning } from "./Feedback";
-import { Status } from "./icon";
+import { StatusIcon } from "./icon";
 import Link from "./link";
 import Loadable from "./loading";
 import { client, ClientError } from "./network";
 import ExpansionPanel from "./panel";
+import { Paper } from "./paper";
 import Resolver from "./Resolver";
 import { Step, Stepper } from "./stepper";
-import {
-  ExpandableRow,
-  ExpandableTable,
-  MetadataTable,
-  Row,
-  StatusRow,
-  Table,
-  TreeTable,
-} from "./Table";
+import { Tab, Tabs } from "./tab";
+import { AccordionRow, MetadataTable, Table, TableCell, TableRow, TreeTable } from "./Table";
 
 export {
   Accordion,
   AccordionDetails,
+  AccordionRow,
   ClutchApp,
   BaseWorkflowProps,
   Button,
@@ -46,9 +43,8 @@ export {
   DialogActions,
   DialogContent,
   Error,
-  ExpandableRow,
-  ExpandableTable,
   ExpansionPanel,
+  Grid,
   Hint,
   Link,
   Loadable,
@@ -56,15 +52,18 @@ export {
   Note,
   NoteConfig,
   NotePanel,
+  Paper,
   RadioGroup,
   Resolver,
-  Row,
   Select,
-  Status,
-  StatusRow,
+  StatusIcon,
   Step,
   Stepper,
+  Tab,
+  Tabs,
   Table,
+  TableCell,
+  TableRow,
   TextField,
   TreeTable,
   useWizardContext,
